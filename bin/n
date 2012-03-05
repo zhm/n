@@ -144,7 +144,9 @@ install_node() {
       && cp -fr $dir/include/node $N_PREFIX/include \
       && cp -f $dir/bin/node $N_PREFIX/bin/node \
       && cp -f $dir/bin/node-waf $N_PREFIX/bin/node-waf \
-      && cp -fr $dir/lib/node/* $N_PREFIX/lib/node/ .
+      && cp -fr $dir/lib/node/* $N_PREFIX/lib/node/. \
+      && rm -f $N_PREFIX/bin/npm \
+      && ln -s $dir/bin/npm $N_PREFIX/bin/npm
   # install
   else
     local tarball="node-v$version.tar.gz"
